@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--这个父级依赖提供相关的maven默认依赖, 使用他后,常用的包依赖可以省去version标签-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.3.RELEASE</version>
+        <relativePath/> <!-- 鼠标点进去能看到用法,本来默认是从上层目录查找parent的pom文件,
+        但是这里给了个空值,这样默认不查文件路径,直接从仓库里面找, 因为我们明显知道这是一个根项目,parent是spring boot,所以肯定直接走仓库-->
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot-train</artifactId>
+    <packaging>jar</packaging>
+
+    <name>spring-boot-train</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!--上面添加了parent,所以这里不用再加version了-->
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!--Spring Boot编译插件-->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
